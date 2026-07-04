@@ -1,0 +1,115 @@
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Booking Management System</h2>
+
+  <div class="card p-3 mb-4">
+    <h4 class="mb-3">Add New Booking</h4>
+
+    <div class="row">
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Resource Name"
+          [(ngModel)]="resourceName"
+        />
+      </div>
+
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="User Name"
+          [(ngModel)]="userName"
+        />
+      </div>
+
+      <div class="col-md-2">
+        <input
+          type="datetime-local"
+          class="form-control"
+          [(ngModel)]="startDateTime"
+        />
+      </div>
+
+      <div class="col-md-2">
+        <input
+          type="datetime-local"
+          class="form-control"
+          [(ngModel)]="endDateTime"
+        />
+      </div>
+
+      <div class="col-md-2">
+        <button
+  class="btn btn-success w-100"
+  (click)="addBooking()"
+>
+  Add Booking
+</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3 mb-4">
+  <h4 class="mb-3">Search by Resource</h4>
+
+  <div class="row">
+    <div class="col-md-8">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter Resource Name"
+        [(ngModel)]="searchResourceName"
+      />
+    </div>
+
+    <div class="col-md-2">
+      <button class="btn btn-primary w-100" (click)="searchBookings()">
+        Search
+      </button>
+    </div>
+
+    <div class="col-md-2">
+      <button class="btn btn-secondary w-100" (click)="loadBookings()">
+        Reset
+      </button>
+    </div>
+  </div>
+</div>
+
+  <p>Total bookings: {{ bookings.length }}</p>
+
+  <table class="table table-bordered table-hover table-striped shadow">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Resource</th>
+        <th>User</th>
+        <th>Status</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td>{{ booking.id }}</td>
+        <td>{{ booking.resourceName }}</td>
+        <td>{{ booking.userName }}</td>
+        <td>{{ booking.status }}</td>
+        <td>{{ booking.startDateTime | date: 'short' }}</td>
+        <td>{{ booking.endDateTime | date: 'short' }}</td>
+        <td>
+          <button
+            class="btn btn-danger btn-sm"
+            *ngIf="booking.status === 'Active'"
+            (click)="cancelBooking(booking.id)"
+          >
+            Cancel
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,4 +1,3 @@
-
 using BookingManagementSystem.DbContexts;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,48 +9,41 @@ namespace BookingManagementSystem
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularApp", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200", "http://localhost:4201")
+                           .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
+            });
+
             builder.Services.AddOpenApi();
 
-            builder.Services.AddEndpointsApiExplorer();// add this package after install
-            builder.Services.AddSwaggerGen(); // add this package after install
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
-
-
-
-
-
-            // Global Object (BookingContext)-----------------------------------------------------------------------------------------------------------
             builder.Services.AddDbContext<BookingContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("BookingContext"))
+                options.UseSqlServer(builder.Configuration.GetConnectionString("BookingContext"))
             );
-            //----------------------------------------------------------------------------------------------------------------------------------------
 
+            var app = builder.Build();
 
-
-
-
-
-
-            var app = builder.Build(); 
-
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
-
-                app.UseSwagger(); //add this package after install
-                app.UseSwaggerUI();//add this package after install
-
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+            app.UseCors("AllowAngularApp");
 
+            app.UseAuthorization();
 
             app.MapControllers();
 
