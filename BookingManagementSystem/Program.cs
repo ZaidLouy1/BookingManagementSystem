@@ -1,8 +1,8 @@
 
-using HRMS.DbContexts;
+using BookingManagementSystem.DbContexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRMS
+namespace BookingManagementSystem
 {
     public class Program
     {
@@ -25,8 +25,8 @@ namespace HRMS
 
 
             // Global Object (HRMSContext)-----------------------------------------------------------------------------------------------------------
-            builder.Services.AddDbContext<HRMSContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("HRMSContext"))
+            builder.Services.AddDbContext<BookingContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("BookingContext"))
             );
             //----------------------------------------------------------------------------------------------------------------------------------------
 

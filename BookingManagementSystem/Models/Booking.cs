@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HRMS.Models
+namespace BookingManagementSystem.Models
 {
     public class Booking
     {

@@ -1,4 +1,4 @@
-﻿namespace HRMS.Dtos.Bookings
+﻿namespace BookingManagementSystem.Dtos.Bookings
 {
     public class SaveBookingDto
     {

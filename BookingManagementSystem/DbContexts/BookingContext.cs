@@ -1,12 +1,12 @@
-﻿using HRMS.Models;
+﻿using BookingManagementSystem.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace HRMS.DbContexts
+namespace BookingManagementSystem.DbContexts
 {
-    public class HRMSContext:DbContext
+    public class BookingContext:DbContext
     {
 
-        public HRMSContext(DbContextOptions<HRMSContext> options): base(options)
+        public BookingContext(DbContextOptions<BookingContext> options): base(options)
         {
             
         }

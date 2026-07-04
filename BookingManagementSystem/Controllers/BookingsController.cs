@@ -1,11 +1,11 @@
-﻿using HRMS.DbContexts;
-using HRMS.Dtos.Booking;
-using HRMS.Dtos.Bookings;
-using HRMS.Models;
+﻿using BookingManagementSystem.DbContexts;
+using BookingManagementSystem.Dtos.Booking;
+using BookingManagementSystem.Dtos.Bookings;
+using BookingManagementSystem.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HRMS.Controllers
+namespace BookingManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -14,9 +14,9 @@ namespace HRMS.Controllers
 
 
 
-        private readonly HRMSContext _dbContext;
+        private readonly BookingContext _dbContext;
 
-        public BookingsController(HRMSContext dbContext)
+        public BookingsController(BookingContext dbContext)
         {
             _dbContext = dbContext;
         }
