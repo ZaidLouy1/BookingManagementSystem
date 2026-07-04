@@ -24,7 +24,7 @@ namespace BookingManagementSystem
 
 
 
-            // Global Object (HRMSContext)-----------------------------------------------------------------------------------------------------------
+            // Global Object (BookingContext)-----------------------------------------------------------------------------------------------------------
             builder.Services.AddDbContext<BookingContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("BookingContext"))
             );

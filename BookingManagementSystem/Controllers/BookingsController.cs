@@ -252,8 +252,9 @@ namespace BookingManagementSystem.Controllers
             x.BookingId,
             x.UserName,
             x.Action,
-           
-        });
+            x.CreatedAt
+
+           });
 
     return Ok(data);
 }
